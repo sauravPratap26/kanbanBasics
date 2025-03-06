@@ -31,6 +31,7 @@ function modalOperations(type) {
     };
 
     modalDiscard.addEventListener("click", () => {
+      modalInput.value = "";
       modal.style.display = "none";
       reject(false);
     });
@@ -66,6 +67,7 @@ document.getElementById("resetKanban").addEventListener("click", async () => {
       console.log("Modal closed successfully");
     }
   } catch (error) {
+    modalInput.value = "";
     console.log("Modal discarded");
   }
 });
