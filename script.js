@@ -1,5 +1,10 @@
-
 let originalParent;
+
+const priorities = [
+  { color: "#D57F7F", label: "HIGH" },
+  { color: "#ffe4c4", label: "MEDIUM" },
+  { color: "#A4C3D2", label: "LOW" },
+];
 
 function modalOperations(type) {
   return new Promise((resolve, reject) => {
@@ -120,10 +125,10 @@ document.getElementById("newCol").addEventListener("click", (event) => {
   item.addEventListener("dragend", () => {
     item.classList.remove("dragging");
 
-    if (!originalParent) return; 
+    if (!originalParent) return;
 
     let originalParentBoardsDiv = document.getElementById(originalParent);
-    if (!originalParentBoardsDiv) return; 
+    if (!originalParentBoardsDiv) return;
 
     let originalParentBoardsHeadCount =
       originalParentBoardsDiv.querySelector(".board-head-count");
@@ -143,6 +148,21 @@ document.getElementById("newCol").addEventListener("click", (event) => {
   let itemBtnGrp = document.createElement("div");
   itemBtnGrp.classList.add("item-btn-grp");
 
+  let prioritySelector = document.createElement("div");
+  prioritySelector.classList.add("priority-selector");
+
+  priorities.forEach(({ color, label }) => {
+    let circle = document.createElement("div");
+    circle.classList.add("priority-circle");
+    circle.style.backgroundColor = color;
+    circle.addEventListener("click", () => {
+      item.style.backgroundColor = color;
+      itemText.style.backgroundColor = color;
+      item.setAttribute("data-priority", label);
+    });
+
+    prioritySelector.appendChild(circle);
+  });
   let createdDate = document.createElement("p");
   createdDate.classList.add("created-date");
   createdDate.textContent = getFormattedDate();
@@ -160,6 +180,7 @@ document.getElementById("newCol").addEventListener("click", (event) => {
     }
   });
 
+  itemBtnGrp.appendChild(prioritySelector);
   itemBtnGrp.appendChild(createdDate);
   itemBtnGrp.appendChild(deleteBtn);
 
@@ -178,6 +199,16 @@ document.getElementById("newCol").addEventListener("click", (event) => {
     let newItem = item.cloneNode(true);
     newItem.querySelector("textarea").value = "";
     newItem.querySelector(".created-date").textContent = getFormattedDate();
+
+    newItem.querySelectorAll(".priority-circle").forEach((circle, index) => {
+      let { color, label } = priorities[index];
+      circle.addEventListener("click", () => {
+        newItem.style.backgroundColor = color;
+        newItem.querySelector(".item-text1").style.backgroundColor= color
+        // itemText.style.backgroundColor = color;
+        newItem.setAttribute("data-priority", label);
+      });
+    });
 
     // maybe future use
     // newItem.id = `item-${Date.now()}`;
@@ -198,7 +229,7 @@ document.getElementById("newCol").addEventListener("click", (event) => {
     newItem.addEventListener("dragend", () => {
       item.classList.remove("dragging");
 
-      if (!originalParent) return; 
+      if (!originalParent) return;
 
       let originalParentBoardsDiv = document.getElementById(originalParent);
       if (!originalParentBoardsDiv) return;
@@ -251,7 +282,6 @@ document.getElementById("newCol").addEventListener("click", (event) => {
     let closestItem = null;
     let closestOffset = Number.NEGATIVE_INFINITY;
 
-
     items.forEach((item) => {
       const box = item.getBoundingClientRect();
       const offset = event.clientY - (box.top + box.height / 2);
@@ -292,44 +322,41 @@ document.getElementById("newCol").addEventListener("click", (event) => {
       }
     }
   });
-
 });
-
 
 function updateItemCount(countElement, itemList) {
   countElement.textContent = itemList.children.length;
 }
 
-
-document.getElementById("boardsList").addEventListener('drag', (event) => {
+document.getElementById("boardsList").addEventListener("drag", (event) => {
   if (event.target.classList.contains("item")) {
-      event.stopPropagation();
+    event.stopPropagation();
   } else if (event.target.classList.contains("board")) {
-    event.preventDefault()
-      console.log(event.target.id)
-      const draggedBoard= document.getElementById(event.target.id)
-      draggedBoard.classList.add("boardDragging");
-      const boardsList =document.getElementById("boardsList")
-      const boardItems=[...boardsList.querySelectorAll(".board")]
-      console.log(boardItems)
-      let closestItem = null;
-      let closestOffset = Number.NEGATIVE_INFINITY;
+    event.preventDefault();
+    console.log(event.target.id);
+    const draggedBoard = document.getElementById(event.target.id);
+    draggedBoard.classList.add("boardDragging");
+    const boardsList = document.getElementById("boardsList");
+    const boardItems = [...boardsList.querySelectorAll(".board")];
+    console.log(boardItems);
+    let closestItem = null;
+    let closestOffset = Number.NEGATIVE_INFINITY;
 
-      boardItems.forEach((item)=>{
-        const box = item.getBoundingClientRect();
-        const offset = event.clientX- (box.left +box.width/2);
+    boardItems.forEach((item) => {
+      const box = item.getBoundingClientRect();
+      const offset = event.clientX - (box.left + box.width / 2);
 
-        if (offset < 0 && offset > closestOffset) {
-          closestOffset = offset;
-          closestItem = item;
-        }
-      })
-      
-      if (closestItem) {
-        boardsList.insertBefore(draggedBoard, closestItem);
-      } else {
-        boardsList.appendChild(draggedBoard);
+      if (offset < 0 && offset > closestOffset) {
+        closestOffset = offset;
+        closestItem = item;
       }
+    });
+
+    if (closestItem) {
+      boardsList.insertBefore(draggedBoard, closestItem);
+    } else {
+      boardsList.appendChild(draggedBoard);
+    }
   }
 });
 

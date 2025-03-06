@@ -122,7 +122,7 @@
 }
 
 .item-text1::placeholder{
-  color: wheat;
+  color: brown;
   padding: 10px;
 }
 
@@ -380,3 +380,25 @@
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
+.status-indicators {
+  display: flex;
+  gap: 9px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.priority-selector {
+  display: flex;
+  gap: 5px;
+}
+
+.priority-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
