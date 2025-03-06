@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kanban</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <p id="colNo">Kanban Board</p>
+        <div class="nav-btn-grp">
+          <button id="newCol" class="button-74">Add new Column</button>
+          <button id="resetKanban" class="button-74">Reset Kanban</button>
+        </div>
+      </div>
+      <div id="boardsList" class="boardsList">
+        <div class="board" draggable="true">
+          <div class="board-head">
+            <input class="board-head-text" placeholder="Start typing here... " />
+
+            <p class="board-head-count">76</p>
+          </div>
+          <div class="item-list">
+            <div class="item" draggable="true">
+              <textarea
+                class="item-text1"
+                placeholder="Start Typing here..."
+              ></textarea>
+              <div class="item-btn-grp">
+                <p class="created-date">23.03.25</p>
+                <button id="myBtn" class="button-56">Delete</button>
+              </div>
+            </div>
+            <div class="item" draggable="true">
+              <textarea
+                class="item-text1"
+                placeholder="Start Typing here..."
+              ></textarea>
+              <div class="item-btn-grp">
+                <p class="created-date">23.03.25</p>
+                <button id="myBtn" class="button-56">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="board-foot">
+            <button class="button-6">Add Item</button>
+            <button id="myBtn" class="button-6">Delete Column</button>
+          </div>
+        </div>
+      </div>
+      <!-- <div>
+        <p style="padding-left: 20px; font-size: 30px">No. of coumns: 3</p>
+      </div> -->
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modalHeading" class="modalHeading">
+          Do You Want to delete for sure
+        </p>
+        <p id="modalDescription" class="modalDescription">
+          Type <i> delete permanently</i> to confirm
+        </p>
+        <input
+          id="modalInput"
+          class="modalInput"
+          placeholder="Delete Permanently"
+        />
+        <div class="modalButtons">
+          <button id="modalConfirm" class="button-6">Confirm</button>
+          <button id="modalDiscard" class="button-6">Discard</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

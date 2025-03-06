@@ -1,0 +1,382 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.navbar {
+  width: 100vw;
+  height: 10vh;
+  background-color: beige;
+  border: 1px solid bisque;
+  padding-left: 30px;
+  padding-right: 30px;
+  /* padding-top: 15px; */
+  font-size: medium;
+  display: flex;
+  justify-content: space-between;
+}
+
+#colNo {
+  font-size: 40px;
+  padding-top: 15px;
+}
+
+.nav-btn-grp {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+/*  */
+
+.boardsList {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+}
+
+.board {
+  border: 1px solid #f3e395;
+  min-height: 80vh;
+  width: 500px;
+  flex-shrink: 0; 
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  overflow-y: hidden;
+}
+.item-list {
+  max-height: 65vh;
+  min-height: 65vh;
+  overflow-y: auto;
+}
+.items {
+  margin-top: 10px;
+}
+
+.item {
+  border: 1px solid;
+  padding: 15px 8px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  background-color: rgb(213, 127, 127);
+  border: 1px solid salmon;
+  align-items: center;
+  width: 100%;
+  
+}
+
+.created-date {
+  font-size: 15px;
+  font-weight: 500;
+}
+.item-text {
+  font-size: 20px;
+}
+/* .item:hover {
+  background-color: rgb(180, 100, 100); 
+  color: black;
+} */
+.board-head {
+  background-color: bisque;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bolder;
+  padding: 0 20px; 
+}
+
+.board-head p:first-child {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.item-text1 {
+  width: 100%; 
+  min-height: 50px; 
+  resize: none; 
+  word-wrap: break-word; 
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  border: none;
+  background-color: rgb(213, 127, 127);
+  font-size: 20px;
+  cursor: text;
+}
+
+.item-text1::placeholder{
+  color: wheat;
+  padding: 10px;
+}
+
+.board-head-text::placeholder{
+  color: brown;
+  padding: 10px;
+}
+/*
+ .item-text1:hover {
+  background-color: rgb(180, 100, 100); 
+  color: black
+} 
+*/
+
+.board-head-text {
+  flex-grow: 1;
+  font-size: 20px;
+  background-color: #ffe4c4;
+  border: none;
+  font-weight: 600;
+  cursor: text;
+}
+
+.board-head-count {
+  background-color: #fbeee0;
+  border-radius: 20%;
+  padding: 4px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+.item-btn-grp {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  justify-content: center;
+  line-height: 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  min-width: 100%;
+  font-size: 18px;
+}
+.button-56:hover {
+  background-color: #ffccbc;
+  border-color: #333;
+}
+
+.button-56:active {
+  background-color: #ffab91;
+  border-color: #000;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
+.board-foot {
+  display: flex;
+  height: 80px;
+  padding: 20px;
+  justify-content: space-evenly;
+  gap: 10px;
+  background-color: #ffe4c4;
+}
+/* CSS */
+.button-6 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  height: 40px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-6:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 40px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(5px, 1px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.button-6:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-6:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-6:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-6 {
+    padding: 0 40px;
+  }
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #f5f5dc;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px;
+  height: 300px; 
+}
+
+
+.close {
+  color: #422800;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalHeading {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 25px;
+  margin-bottom: 10px;
+}
+.modalDescription {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 25px;
+  padding-top: 0px;
+}
+
+.modalInput {
+  width: 80%;
+  margin-left: 25px;
+  height: 40px;
+  border: 1px solid saddlebrown;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+
+
+
+.item.dragging {
+  opacity: 0.5; 
+  background-color: rgba(233, 94, 7, 0.8); 
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.board.boardDragging{
+  opacity: 0.5; 
+  background-color: rgba(233, 94, 7, 0.8); 
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
